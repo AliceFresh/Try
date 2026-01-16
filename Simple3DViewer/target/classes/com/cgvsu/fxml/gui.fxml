@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cgvsu.GuiController"
+            focusTraversable="true">
+    <children>
+        <!-- Canvas на весь экран -->
+        <Canvas fx:id="canvas"
+                AnchorPane.topAnchor="0.0"
+                AnchorPane.bottomAnchor="0.0"
+                AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0"
+                width="1200.0"
+                height="800.0" />
+
+        <!-- Панель управления СЛЕВА -->
+        <VBox spacing="8.0"
+              AnchorPane.topAnchor="10.0"
+              AnchorPane.leftAnchor="10.0"
+              style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-padding: 10; -fx-background-radius: 5;">
+            <children>
+                <!-- Меню -->
+                <MenuBar>
+                    <menus>
+                        <Menu text="File">
+                            <items>
+                                <MenuItem fx:id="openModelMenuItem"
+                                          onAction="#onOpenModelMenuItemClick"
+                                          text="Open Model..." />
+                                <MenuItem text="Load Texture..."
+                                          onAction="#onUseTextureCheckBoxChange" />
+                                <SeparatorMenuItem />
+                                <MenuItem text="Exit" />
+                            </items>
+                        </Menu>
+                        <Menu text="Help">
+                            <items>
+                                <MenuItem text="Controls" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+
+                <Separator />
+
+                <!-- Rendering Modes -->
+                <Label text="Rendering Modes" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+
+                <VBox spacing="5">
+                    <CheckBox fx:id="drawWireframeCheckBox"
+                              text="Draw Wireframe" />
+                    <CheckBox fx:id="useTextureCheckBox"
+                              text="Use Texture" />
+                    <CheckBox fx:id="useLightingCheckBox"
+                              text="Use Lighting" />
+                </VBox>
+
+                <Separator />
+
+                <!-- Camera Controls -->
+                <Label text="Camera Controls" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+
+                <GridPane hgap="5" vgap="5">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="80" />
+                        <ColumnConstraints minWidth="80" />
+                    </columnConstraints>
+
+                    <Button text="Forward (W)"
+                            onAction="#handleCameraForward"
+                            prefWidth="80"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="0" />
+                    <Button text="Backward (S)"
+                            onAction="#handleCameraBackward"
+                            prefWidth="80"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="0" />
+                    <Button text="Left (A)"
+                            onAction="#handleCameraLeft"
+                            prefWidth="80"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="1" />
+                    <Button text="Right (D)"
+                            onAction="#handleCameraRight"
+                            prefWidth="80"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="1" />
+                    <Button text="Up (Q)"
+                            onAction="#handleCameraUp"
+                            prefWidth="80"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="2" />
+                    <Button text="Down (E)"
+                            onAction="#handleCameraDown"
+                            prefWidth="80"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="2" />
+                </GridPane>
+
+                <Separator />
+
+                <!-- Keyboard Hints -->
+                <Label text="Keyboard Shortcuts" style="-fx-font-weight: bold; -fx-font-size: 12px;" />
+                <Label text="Model: WASDQE - move" style="-fx-font-size: 10px;" />
+                <Label text="IJKLUO - rotate" style="-fx-font-size: 10px;" />
+                <Label text="+/- scale, R - reset" style="-fx-font-size: 10px;" />
+                <Label text="Mouse: LMB - rotate" style="-fx-font-size: 10px;" />
+                <Label text="RMB - pan, Scroll - zoom" style="-fx-font-size: 10px;" />
+            </children>
+            <padding>
+                <Insets top="5" right="5" bottom="5" left="5" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
